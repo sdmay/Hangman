@@ -1,70 +1,46 @@
-var words = ["test", "hallelujah", "trump", "runner", "quest", "fridge"]
-var wordOption = "";
+
+// 10 guesses allowed
+
+// Log incorrect guess- Insert letter in formation if correct
+
+// If they miss 10 they add a losss
+
+// If they get the answer right they show a win
+
+// After either win or loss reset the game
+
+var word = ["apple", "egg", "fish", "zebra", "california"];
+var numBlanks = [];
 var numLetters = [];
-var emptySpace = 0;
-var guessleft = [];
-var incorrect = [];
-
-
+var wordImg = [];
 var win = 0;
 var loss = 0;
-var left = 5;
+var guessRemaining = 0;
+var lettersGuessed = [];
+var random = word[Math.floor(Math.random() * word.length)];
 
+$(document).ready();
 
-function begin (){
-	wordOption = words[Math.floor(Math.random() * words.length)];
-	numLetters = wordOption.split("");
-	emptySpace = numLetters.length;
+function startGame() {
+    numLetters = random.split("");
+    console.log(numLetters);
 
-	left = 5;
-	incorrect = [];
-	guessleft = [];
-
-// Never would have gotten that .push
-
-	for (var i=0; i<emptySpace; i++) {
-		guessleft.push("_");
-	}
-
-	document.getElementById("wordtoget").innerHTML = guessleft.join(" ");
-
-document.getElementById("left").innerHTML = left;
-document.getElementById("win").innerHTML = win;
-document.getElementById("loss").innerHTML = loss;
-
-
-console.log(wordOption);
-console.log(numLetters);
-console.log(emptySpace);
-console.log(guessleft);
-
+    for (var i = 0; i < numLetters.length; i++) {
+        numBlanks.push("_ ");
+    }
 }
 
-function letterCheck(letter){
+$document.keyUp function{
+
 	
-	var letterWord = false;
-
-	for (var i = 0; i < emptySpace; i++) {
-		if (wordOption[i] == letter) {
-		letterword = true;
-		alert("letter found")
-	}
-	}
 }
 
-for (var i = 0; i < emptySpace; i++) {
-	if (wordOption[i] == letter){
-		guessleft[i] == letter;
-	}
-}
-	
+
+startGame();
+
+//display underscores per letter in word
+$("#wordtoget").html(numBlanks);
 
 
- begin();
 
- document.onkeyup = function(game) {
 
- 	var letterguessed = String.fromCharCode(event.keyCode).toLowerCase();
- 	letterCheck(letterguessed);
- 	console.log(letterguessed);
-}
