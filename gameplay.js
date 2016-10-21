@@ -28,12 +28,20 @@ function startGame() {
     for (var i = 0; i < numLetters.length; i++) {
         numBlanks.push("_ ");
     }
+
+
 }
 
-$document.keyUp function{
+$(document).on("keypress", function () {
+   
+if (lettersGuessed === numLetters){
+    	$("#wordtoget").html(lettersGuessed);
+    }
+console.log(lettersGuessed);
 
-	
-}
+});
+
+
 
 
 startGame();
