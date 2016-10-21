@@ -10,9 +10,10 @@
 // After either win or loss reset the game
 
 var word = ["apple", "egg", "fish", "zebra", "california"];
+var selected = "";
 var numBlanks = [];
 var numLetters = [];
-var wordImg = [];
+var blanks = 0;
 var win = 0;
 var loss = 0;
 var guessRemaining = 0;
@@ -32,17 +33,27 @@ function startGame() {
 
 }
 
-$(document).on("keypress", function () {
-   
-if (lettersGuessed === numLetters){
-    	$("#wordtoget").html(lettersGuessed);
-    }
-console.log(lettersGuessed);
 
-});
+document.getElementById('wordtoget').innerHTML = numBlanks.join(" ");
+document.getElementById('lettersGuessed').innerHTML = guessRemaining;
+document.getElementById('win').innerHTML = win;
+document.getElementById('loss').innerHTML = loss;
 
 
+function checkLetter(letter){
 
+
+	var isLetter = false;
+
+	for (var i = 0; i < blanks; i++) {
+		if(selected[i] == letter){
+			isLetter = true;
+			alert("letter found");
+		}
+
+		}
+
+}
 
 startGame();
 
@@ -50,5 +61,9 @@ startGame();
 $("#wordtoget").html(numBlanks);
 
 
-
+document.onkeyup = function(event) {
+	var lettersGuessed = String.fromCharCode(event.keyCode).toLowerCase();
+	checkLetter(lettersGuessed);
+	console.log(lettersGuessed);
+}
 
